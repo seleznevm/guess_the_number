@@ -1,23 +1,6 @@
 cmake_minimum_required(VERSION 3.5)
+project(guess_the_number)
 
-project(03.homework)
+include_directories(include)
 
-add_executable(
-	check_value
-	check_value.cpp
-)
-
-add_executable(
-	random_value
-	random_value.cpp
-)
-
-add_executable(
-	high_scores
-	high_scores.cpp
-)
-
-add_executable(
-	argument
-	argument.cpp
-)
+add_executable(main	main.cpp check_value.cpp random_value.cpp high_scores.cpp)

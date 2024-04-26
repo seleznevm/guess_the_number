@@ -1,9 +1,10 @@
 #include <iostream>
+#include "random_value.h"
 
 #include <cstdlib>
 #include <ctime>
 
-int main() {
+const int random_value() {
 
 	const int max_value = 100;
 
@@ -11,7 +12,7 @@ int main() {
 
 	const int random_value = std::rand() % 100;
 
-	std::cout << random_value << std::endl;
+//	std::cout << random_value << std::endl;
 
-	return 0;
+	return random_value;
 }

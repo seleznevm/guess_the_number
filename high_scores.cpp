@@ -2,25 +2,12 @@
 #include <fstream>
 #include <string>
 
-int main() {
+#include "high_scores.h"
 
-	const std::string high_scores_filename = "high_scores.txt";
+const std::string high_scores_filename = "high_scores.txt";
 
-	// Ask about name
-	std::cout << "Hi! Enter your name, please:" << std::endl;
-	std::string user_name;
-	std::cin >> user_name;
-
-	// Get the last high score
-	std::cout << "Enter your high score:" << std::endl;
-	int attempts_count = 0;
-	std::cin >> attempts_count;
-	if (std::cin.fail()) {
-		std::cout << "Bad value!" << std::endl;
-		return -1;
-	}
-
-	// Write new high score to the records table
+int addScore(Player& pl)
+{
 	{
 		// We should open the output file in the append mode - we don't want
 		// to erase previous results.
@@ -31,8 +18,8 @@ int main() {
 		}
 
 		// Append new results to the table:
-		out_file << user_name << ' ';
-		out_file << attempts_count;
+		out_file << pl.name << ' ';
+		out_file << pl.attempts_count;
 		out_file << std::endl;
 	} // end of score here just to mark end of the logic block of code
 
