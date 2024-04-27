@@ -12,12 +12,12 @@ int check_value(const int target_value)
 		std::cin >> current_value;
 		if (current_value < target_value)
 			{ 
-			std::cout << "less than " << current_value << std::endl;
+			std::cout << "greater than " << current_value << std::endl;
 			attemps_count++;
 			}
 		else if (current_value > target_value) 
 			{
-			std::cout << "greater than " << current_value << std::endl;
+			std::cout << "less than " << current_value << std::endl;
 			attemps_count++;
 			}
 		else {
