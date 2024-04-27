@@ -7,10 +7,12 @@
 int check_argument(int argc, char** argv);
 
 int max_value = 100;
+enum appState{normal_run, only_score};
 
 int main(int argc, char** argv)
 {
-    check_argument(argc, argv);
+    if(check_argument(argc, argv) == only_score)
+        return 0;
     bool not_win = true;
     const int target_value = random_value();
 
@@ -20,10 +22,17 @@ int main(int argc, char** argv)
     
     //create a Player
     Player player;
-    std::cin >> player.name;
-
+    try
+    {
+        std::cin >> player.name;
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+ 
     //start check value game
     player.attempts_count = check_value(target_value);
     addScore(player);
-
+    showScore();
 }

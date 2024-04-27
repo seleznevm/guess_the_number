@@ -8,3 +8,4 @@ struct Player{
 };
 
 int addScore(Player& player);
+int showScore();

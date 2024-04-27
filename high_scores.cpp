@@ -6,7 +6,7 @@
 
 const std::string high_scores_filename = "high_scores.txt";
 
-int addScore(Player& pl)
+int addScore(Player& player)
 {
 	{
 		// We should open the output file in the append mode - we don't want
@@ -18,12 +18,15 @@ int addScore(Player& pl)
 		}
 
 		// Append new results to the table:
-		out_file << pl.name << ' ';
-		out_file << pl.attempts_count;
+		out_file << player.name << ' ';
+		out_file << player.attempts_count;
 		out_file << std::endl;
 	} // end of score here just to mark end of the logic block of code
 
-	// Read the high score file and print all results
+	return 0;
+}
+
+int showScore()
 	{
 		std::ifstream in_file{high_scores_filename};
 		if (!in_file.is_open()) {
@@ -50,7 +53,5 @@ int addScore(Player& pl)
 			// Print the information to the screen
 			std::cout << username << '\t' << high_score << std::endl;
 		}
+		return 0;
 	}
-
-	return 0;
-}

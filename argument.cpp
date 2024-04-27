@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <high_scores.h>
 
 extern int max_value;
 
@@ -11,10 +12,9 @@ int check_argument(int argc, char** argv) {
 
 	// To check - does use print some other argument we should check if the argc >= 2
 	if (argc >= 2) {
-		std::cout << "App runs with argument: " << std::endl;
-		std::cout << "argv[1] = " << argv[1] << std::endl;
-
 		std::string arg1_value{ argv[1] };
+
+		// add -max atribute input
 		if (arg1_value == "-max") {
 			// We've detected the '-parameter' argument. And we extect that after this argument there is a value:
 			int parameter_value = 0;
@@ -25,6 +25,13 @@ int check_argument(int argc, char** argv) {
 			// We need to parse the string to the int value
 			parameter_value = std::stoi(argv[2]);
 			max_value = parameter_value;
+		}
+
+		// add -table atribute
+		if(arg1_value == "-table")
+		{
+			showScore();
+			return 1;
 		}
 	}
 
