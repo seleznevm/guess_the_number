@@ -1,6 +1,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <map>
 
 #include "high_scores.h"
 
@@ -54,4 +55,51 @@ int showScore()
 			std::cout << username << '\t' << high_score << std::endl;
 		}
 		return 0;
+	}
+
+//add map with users list
+std::map<std::string, int> usersList;
+void addUser(std::string name, int score)
+{
+	auto it = usersList.find(name);
+	if (it != usersList.end())
+	{
+		if (it->second > score)
+		{
+				it->second = score;
+		}
+	}
+	else
+	{
+		usersList.insert({ name, score });
+	}
+}
+
+	int showScoreMin()
+	{
+		std::ifstream infile{high_scores_filename};
+		if(!(infile).is_open())
+		{
+			std::cout << "Failed to open file for read: " << high_scores_filename << "!" << std::endl;
+			return -1;
+		}
+		std::cout << "High scores table (shown only minimum results)\n";
+		std::string username;
+		int high_score{0};
+		while(true){
+			infile >> username;
+			infile >> high_score;
+			infile.ignore();
+				if(infile.fail()) 
+				{
+					break;
+				}
+			addUser(username, high_score);
+		}
+		
+		//print minimal scores
+		for(auto it = usersList.cbegin(); it != usersList.cend(); it++)
+		{
+			std::cout << it->first << "\t" << it->second << std::endl;
+		}
 	}

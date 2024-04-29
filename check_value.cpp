@@ -6,9 +6,9 @@
 int check_value(const int target_value) 
 {
 	int attemps_count{0};
+	std::cout << "Enter your guess:" << std::endl;
+	int current_value = 0;
 	do {
-		std::cout << "Enter your guess:" << std::endl;
-		int current_value = 0;
 		std::cin >> current_value;
 		if (current_value < target_value)
 			{ 
@@ -21,7 +21,8 @@ int check_value(const int target_value)
 			attemps_count++;
 			}
 		else {
-			std::cout << "you win!" << std::endl;
+			std::cout << "YOU WIN!" << std::endl;
+			attemps_count++;
 			return attemps_count;
 			}
 		}
