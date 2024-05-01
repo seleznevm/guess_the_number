@@ -4,7 +4,7 @@
 
 extern int max_value;
 
-int check_argument(int argc, char** argv) {
+int check_argument(const int argc, const char** argv) {
 
 	// argc - it is a count of arguments
 	// But there is some detail - OS always pass one system argument - the name of the executable

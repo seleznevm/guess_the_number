@@ -5,7 +5,7 @@
 #include "high_scores.h"
 #include "check_value.h"
 #include "random_value.h"
-int check_argument(int argc, char** argv);
+int check_argument(const int argc, const char** argv);
 
 int max_value = 100;
 enum appState{normal_run, only_score};
