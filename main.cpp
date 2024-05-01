@@ -5,16 +5,13 @@
 #include "high_scores.h"
 #include "check_value.h"
 #include "random_value.h"
-int check_argument(int argc, char** argv);
+void check_argument(int argc, char** argv);
 
 int max_value = 100;
-enum appState{normal_run, only_score};
 
 int main(int argc, char** argv)
 {
-    if(check_argument(argc, argv) == only_score)
-        return 0;
-    bool not_win = true;
+    check_argument(argc, argv);
     const int target_value = random_value();
 
     std::cout << "Welcome to the \"Guess the number\"" << std::endl;
